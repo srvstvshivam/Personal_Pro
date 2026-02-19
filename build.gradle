@@ -1,0 +1,62 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.2'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.internshipmanagement'
+version = '0.0.1-SNAPSHOT'
+description = 'Demo project for Spring Boot'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+dependencies {
+
+    // 🌐 WEB
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // 🍃 MongoDB
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+    // 🔐 Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // ✅ Validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // 📧 Mail (OTP Email)
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+    // 🔑 JWT
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+    // ☁️ Cloudinary
+    implementation 'com.cloudinary:cloudinary-http5:2.0.0'
+
+    // 🛠 Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // 🧪 Testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
