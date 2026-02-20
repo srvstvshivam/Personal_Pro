@@ -10,7 +10,7 @@ import java.util.List;
 
 @Document(collection = "students")
 public class Student {
-A
+
     @Id
     private String id;
 
